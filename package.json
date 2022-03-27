@@ -11,7 +11,7 @@
   },
   "name": "supfiger-eslint-rules",
   "description": "Custom and extended rules for ESLint by @supfiger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/supfiger/supfiger-eslint-rules.git"

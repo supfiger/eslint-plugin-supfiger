@@ -16,6 +16,9 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:eslint-plugin/recommended',
   ],
+  plugins: [
+    'eslint-plugin-supfiger'
+  ],
   env: {
     node: true,
     es2021: true,
@@ -34,6 +37,14 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/no-explicit-any': STATUS.off,
+    'eslint-plugin-supfiger/typescript-no-any-extended': [STATUS.error,
+      {
+        catchOptions: {
+          allow: false,
+          fixToAny: true
+        },
+      }
+    ],
     indent: STATUS.off, // important: do not remove/change this rule! // use next one rule
     '@typescript-eslint/indent': [STATUS.error, TAB_WIDTH, { VariableDeclarator: 'first' }],
     semi: [STATUS.error, 'never', { beforeStatementContinuationChars: 'always' }],

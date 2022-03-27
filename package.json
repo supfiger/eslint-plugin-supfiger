@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-supfiger",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "Custom and extended rules for ESLint by @supfiger",
   "keywords": [
     "ESLint",
@@ -41,6 +41,7 @@
     "eslint": "^8.0.1",
     "eslint-plugin-eslint-plugin": "^4.0.1",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-supfiger": "^1.0.3",
     "mocha": "^9.1.3",
     "typescript": "^4.6.3"
   },

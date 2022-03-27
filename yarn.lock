@@ -393,6 +393,14 @@ eslint-plugin-node@^11.1.0:
     resolve "^1.10.1"
     semver "^6.1.0"
 
+eslint-plugin-supfiger@^1.0.3:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-supfiger/-/eslint-plugin-supfiger-1.0.4.tgz#c6555b33453bb60c41baa23348cf94407bd08017"
+  integrity sha512-gDTgJEpaTsJDrt7nYf9mK2clHPW3GKPUVMhSEBakloFtfX1W/hsCmaA6pOJXgsA9JRGbBEkpzJTZxUtw9/ehAw==
+  dependencies:
+    "@typescript-eslint/experimental-utils" "^5.16.0"
+    requireindex "^1.2.0"
+
 eslint-scope@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-5.1.1.tgz#e786e59a66cb92b3f6c1fb0d508aab174848f48c"

@@ -1,3 +1,16 @@
+/**
+ * @fileoverview Disallow usage of the `any` type
+ * @author
+ */
+
+//------------------------------------------------------------------------------
+// Rule Definition
+//------------------------------------------------------------------------------
+
+/**
+ * @type {import('eslint').Rule.RuleModule}
+ */
+
 import { createEslintRule } from '../utils'
 import { AST_NODE_TYPES, TSESLint, TSESTree } from '@typescript-eslint/experimental-utils'
 

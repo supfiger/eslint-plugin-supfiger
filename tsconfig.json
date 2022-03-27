@@ -10,7 +10,6 @@
     "alwaysStrict": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
-    "removeComments": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": false,
     "noImplicitThis": true,
@@ -20,7 +19,7 @@
       "dom",
       "es2017"
     ],
-    "outDir": "dist",
+    "outDir": "lib",
     "rootDir": "src",
     "baseUrl": ".",
     "typeRoots": [
@@ -40,7 +39,8 @@
     "node_modules",
     "**/.git",
     "types",
-    "dist",
+    "tests",
+    "lib",
     "tmp"
   ]
 }

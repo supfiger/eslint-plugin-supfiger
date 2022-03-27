@@ -1,23 +1,21 @@
 import { createEslintRule } from '../utils'
 import { AST_NODE_TYPES, TSESLint, TSESTree } from '@typescript-eslint/experimental-utils'
 
-type MessageIds = 'unexpectedAny' | 'suggestUnknown' | 'suggestNever';
+type MessageIds = 'unexpectedAny' | 'suggestUnknown' | 'suggestNever' | 'implicitAnyInCatchParam'
 
 export type Options = [
   {
     fixToUnknown?: boolean;
     ignoreRestArgs?: boolean;
-    allowInCatch?: boolean;
+    catchOptions?: {
+      allow?: boolean
+      fixToAny?: boolean
+    };
   },
 ];
 
-interface FixOrSuggest {
-  fix: TSESLint.ReportFixFunction | null;
-  suggest: TSESLint.ReportSuggestionArray<MessageIds> | null;
-}
-
 export default createEslintRule<Options, MessageIds>({
-  name: 'typescript-no-explicit-any-extended',
+  name: 'typescript-no-any-extended',
   meta: {
     type: 'suggestion',
     docs: {
@@ -29,6 +27,7 @@ export default createEslintRule<Options, MessageIds>({
     hasSuggestions: true,
     messages: {
       unexpectedAny: 'Unexpected any. Specify a different type.',
+      implicitAnyInCatchParam: 'Implicit any in catch param.',
       suggestUnknown:
         'Use `unknown` instead, this will force you to explicitly, and safely assert the type is correct.',
       suggestNever:
@@ -45,8 +44,12 @@ export default createEslintRule<Options, MessageIds>({
           ignoreRestArgs: {
             type: 'boolean',
           },
-          allowInCatch: {
-            type: 'boolean',
+          catchOptions: {
+            type: 'object',
+            properties: {
+              allow: 'boolean',
+              fixToAny: 'boolean',
+            },
           },
         },
       },
@@ -56,47 +59,67 @@ export default createEslintRule<Options, MessageIds>({
     {
       fixToUnknown: false,
       ignoreRestArgs: false,
-      allowInCatch: false,
+      catchOptions: {
+        allow: false,
+        fixToAny: false,
+      },
     },
   ],
-  create: (context, [{ ignoreRestArgs, fixToUnknown, allowInCatch }]) => ({
+  create: (context, [{ ignoreRestArgs, fixToUnknown, catchOptions }]) => ({
     TSAnyKeyword(node) {
+      // rest args
       if (ignoreRestArgs && isNodeDescendantOfRestElementInFunction(node)) {
         return
       }
 
-      if (allowInCatch && isNodeInCatchParam(node)) {
+      // catch clause params
+      const catchCloseNode = searchNode(node, AST_NODE_TYPES.CatchClause) as TSESTree.CatchClause
+      const isNodeInCatchParam = catchCloseNode && catchCloseNode?.param?.typeAnnotation?.typeAnnotation?.type === AST_NODE_TYPES.TSAnyKeyword
+
+      if (catchOptions?.allow && isNodeInCatchParam) {
         return
       }
 
-      const fixOrSuggest: FixOrSuggest = {
-        fix: null,
-        suggest: [
-          {
-            messageId: 'suggestUnknown',
-            fix(fixer: TSESLint.RuleFixer): TSESLint.RuleFix {
-              return fixer.replaceText(node, 'unknown')
-            },
+      let fix: TSESLint.ReportFixFunction | null = null
+      const suggest: TSESLint.ReportSuggestionArray<MessageIds> = [
+        {
+          messageId: 'suggestUnknown',
+          fix(fixer: TSESLint.RuleFixer): TSESLint.RuleFix {
+            return fixer.replaceText(node, 'unknown')
           },
-          {
-            messageId: 'suggestNever',
-            fix(fixer: TSESLint.RuleFixer): TSESLint.RuleFix {
-              return fixer.replaceText(node, 'never')
-            },
+        },
+        {
+          messageId: 'suggestNever',
+          fix(fixer: TSESLint.RuleFixer): TSESLint.RuleFix {
+            return fixer.replaceText(node, 'never')
           },
-        ],
-      }
+        },
+      ]
 
       if (fixToUnknown) {
-        fixOrSuggest.fix = (fixer): TSESLint.RuleFix =>
+        fix = (fixer): TSESLint.RuleFix =>
           fixer.replaceText(node, 'unknown')
       }
 
       context.report({
         node,
         messageId: 'unexpectedAny',
-        ...fixOrSuggest,
+        fix,
+        suggest,
       })
+    },
+    CatchClause(node) {
+      if (!node.param) {
+        return
+      }
+
+      if (catchOptions?.fixToAny && !node.param.typeAnnotation) {
+        context.report({
+          node,
+          fix: (fixer): TSESLint.RuleFix => fixer.insertTextAfter(node.param!, ': any'),
+          messageId: 'implicitAnyInCatchParam',
+        })
+      }
     },
   }),
 })
@@ -219,21 +242,9 @@ function isNodeDescendantOfRestElementInFunction(
   )
 }
 
-function isNodeInCatchParam(node: TSESTree.TSAnyKeyword): boolean {
-  const catchCloseNode = searchNode(node, AST_NODE_TYPES.CatchClause) as TSESTree.CatchClause
-
-  if (catchCloseNode) {
-    return catchCloseNode?.param?.typeAnnotation?.typeAnnotation?.type === AST_NODE_TYPES.TSAnyKeyword
-  }
-
-  return false
-}
-
 function searchNode(node: TSESTree.TSAnyKeyword, type: AST_NODE_TYPES) {
-  // eslint-disable-next-line supfiger-eslint/typescript-no-explicit-any-extended
   const isSearched = (node: any) => node?.type === type
 
-  // eslint-disable-next-line supfiger-eslint/typescript-no-explicit-any-extended
   const search = (currentNode: any): any => {
     if (!currentNode) return
 

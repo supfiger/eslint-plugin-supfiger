@@ -26,7 +26,10 @@ module.exports = {
   ignorePatterns: ['node_modules', 'dist', '.idea'],
   rules: {
     '@typescript-eslint/no-explicit-any': STATUS.off,
-    'supfiger-eslint/typescript-no-explicit-any-extended': [STATUS.error, { allowInCatch: true }],
+    'supfiger-eslint/typescript-no-any-extended': [STATUS.error, {
+      catchOptions: { allow: true, fixToAny: true },
+    }],
+    //'@typescript-eslint/no-implicit-any-catch': [STATUS.error],
     indent: STATUS.off, // important: do not remove/change this rule! // use next one rule
     '@typescript-eslint/indent': [STATUS.error, TAB_WIDTH, { VariableDeclarator: 'first' }],
     semi: [STATUS.error, 'never', { beforeStatementContinuationChars: 'always' }],

@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "module": "commonjs",
+    "target": "es6",
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "removeComments": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "lib": ["dom", "scripthost", "es2015", "es2016", "es2017"],
+    "outDir": "dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "typeRoots": ["types", "node_modules/@types"],
+    "paths": {
+      "root/*": [
+        "./*"
+      ]
+    },
+    "types": ["node"]
+  },
+  "exclude": [
+    ".vscode",
+    ".idea",
+    "node_modules",
+    "**/.git",
+    "types",
+    "dist",
+    "tmp",
+  ]
+}

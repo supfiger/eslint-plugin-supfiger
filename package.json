@@ -9,12 +9,12 @@
     "eslint": "^8.12.0",
     "typescript": "^4.6.3"
   },
-  "name": "supfiger-eslint",
+  "name": "supfiger-eslint-rules",
   "description": "Custom and extended rules for ESLint by @supfiger",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/supfiger/supfiger-eslint.git"
+    "url": "git+https://github.com/supfiger/supfiger-eslint-rules.git"
   },
   "author": "@supfiger",
   "license": "MIT",
@@ -29,9 +29,9 @@
     "lint": "eslint ."
   },
   "bugs": {
-    "url": "https://github.com/supfiger/supfiger-eslint/issues"
+    "url": "https://github.com/supfiger/supfiger-eslint-rules/issues"
   },
-  "homepage": "https://github.com/supfiger/supfiger-eslint#readme",
+  "homepage": "https://github.com/supfiger/supfiger-eslint-rules#readme",
   "main": "dist/index.js",
   "keywords": [
     "ESLint",

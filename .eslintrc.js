@@ -20,9 +20,6 @@ module.exports = {
     'ecmaVersion': 'latest',
     'sourceType': 'module',
   },
-  plugins: [
-    'supfiger-eslint',
-  ],
   ignorePatterns: ['node_modules', 'dist', '.idea'],
   rules: {
     '@typescript-eslint/no-explicit-any': STATUS.off,

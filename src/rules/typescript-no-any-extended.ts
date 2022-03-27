@@ -1,6 +1,6 @@
 /**
  * @fileoverview Disallow usage of the `any` type
- * @author
+ * @author Danil Zinchenko
  */
 
 //------------------------------------------------------------------------------

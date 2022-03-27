@@ -16,19 +16,24 @@
     "noImplicitThis": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "sourceMap": true,
-    "lib": ["dom", "scripthost", "es2015", "es2016", "es2017"],
+    "lib": [
+      "dom",
+      "es2017"
+    ],
     "outDir": "dist",
-    "rootDir": ".",
+    "rootDir": "src",
     "baseUrl": ".",
-    "typeRoots": ["types", "node_modules/@types"],
-    "paths": {
-      "root/*": [
-        "./*"
-      ]
-    },
-    "types": ["node"]
+    "typeRoots": [
+      "types",
+      "node_modules/@types"
+    ],
+    "types": [
+      "node"
+    ]
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
     ".vscode",
     ".idea",
@@ -36,6 +41,6 @@
     "**/.git",
     "types",
     "dist",
-    "tmp",
+    "tmp"
   ]
 }

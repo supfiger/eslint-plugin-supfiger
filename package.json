@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-supfiger",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Custom and extended rules for ESLint by @supfiger",
   "keywords": [
     "ESLint",

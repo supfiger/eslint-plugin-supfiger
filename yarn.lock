@@ -394,9 +394,9 @@ eslint-plugin-node@^11.1.0:
     semver "^6.1.0"
 
 eslint-plugin-supfiger@^1.0.3:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-supfiger/-/eslint-plugin-supfiger-1.0.4.tgz#c6555b33453bb60c41baa23348cf94407bd08017"
-  integrity sha512-gDTgJEpaTsJDrt7nYf9mK2clHPW3GKPUVMhSEBakloFtfX1W/hsCmaA6pOJXgsA9JRGbBEkpzJTZxUtw9/ehAw==
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-supfiger/-/eslint-plugin-supfiger-1.0.5.tgz#1873a23070ab266e2f1ad43bd39230007977deae"
+  integrity sha512-9q9vd6AK1uxIZL9wFGncvXkCb6Kd8eUf3URRH+abCFN+nIRsEUmJ7Yl8qam7RBHJsYp9A9zY3SQbHGB6YxV14A==
   dependencies:
     "@typescript-eslint/experimental-utils" "^5.16.0"
     requireindex "^1.2.0"

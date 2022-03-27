@@ -16,7 +16,7 @@ import { AST_NODE_TYPES, TSESLint, TSESTree } from '@typescript-eslint/experimen
 
 type MessageIds = 'unexpectedAny' | 'suggestUnknown' | 'suggestNever' | 'implicitAnyInCatchParam'
 
-export type Options = [
+type Options = [
   {
     fixToUnknown?: boolean;
     ignoreRestArgs?: boolean;
@@ -27,7 +27,7 @@ export type Options = [
   },
 ];
 
-export default createEslintRule<Options, MessageIds>({
+const rule = createEslintRule<Options, MessageIds>({
   name: 'typescript-no-any-extended',
   meta: {
     type: 'suggestion',
@@ -266,3 +266,5 @@ function searchNode(node: TSESTree.TSAnyKeyword, type: AST_NODE_TYPES) {
 
   return search(node)
 }
+
+export = rule

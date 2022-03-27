@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-supfiger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Custom and extended rules for ESLint by @supfiger",
   "keywords": [
     "ESLint",
@@ -31,12 +31,12 @@
     "reinstall": "rm -rf yarn.lock node_modules && yarn"
   },
   "dependencies": {
+    "@typescript-eslint/experimental-utils": "^5.16.0",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
     "@types/requireindex": "^1.2.0",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
-    "@typescript-eslint/experimental-utils": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
     "eslint": "^8.0.1",
     "eslint-plugin-eslint-plugin": "^4.0.1",

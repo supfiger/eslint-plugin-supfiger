@@ -1,1 +1,1 @@
-# typescript-no-explicit-any-extended
+# ESLint rules by @supfiger

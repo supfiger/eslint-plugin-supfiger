@@ -1,13 +1,21 @@
 {
   "devDependencies": {
+    "@types/eslint": "^8.4.1",
+    "@types/glob": "^7.2.0",
+    "@types/node": "^17.0.23",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
     "eslint": "^8.12.0",
     "typescript": "^4.6.3"
   },
-  "name": "typescript-no-explicit-any-extended",
+  "name": "supfiger-eslint-rules",
+  "description": "Custom and extended rules for ESLint by @supfiger",
   "version": "1.0.0",
-  "description": "Extended no-explicit-any default rule for eslint",
-  "repository": "https://github.com/supfiger/typescript-no-explicit-any-extended.git",
+  "repository": "https://github.com/supfiger/supfiger-eslint.git",
   "author": "@supfiger",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "glob": "^7.2.0"
+  }
 }

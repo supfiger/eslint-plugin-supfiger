@@ -25,6 +25,7 @@
   },
   "scripts": {
     "build": "rm -rf dist; tsc",
+    "deploy": "yarn build && yarn publish",
     "lint": "eslint ."
   },
   "bugs": {

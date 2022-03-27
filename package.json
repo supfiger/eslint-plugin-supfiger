@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "typescript": "^4.6.3"
+  },
+  "name": "typescript-no-explicit-any-extended",
+  "version": "1.0.0",
+  "description": "Extended no-explicit-any default rule for eslint",
+  "repository": "https://github.com/supfiger/typescript-no-explicit-any-extended.git",
+  "author": "@supfiger",
+  "license": "MIT",
+  "private": false
+}
